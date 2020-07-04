@@ -7,7 +7,7 @@ const App = ({ players }) => {
 	return (
 		<div>
 			<ul>
-				{players.map(player => <li>Player {player.name}</li>)}
+				{players.map(player => <li key={player.id}>Player {player.name}</li>)}
 			</ul>
 
 			<CreatePlayerForm />
