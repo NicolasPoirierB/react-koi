@@ -8,13 +8,7 @@ import Map from './Map';
 const App = ({ has_started }) => {
 	return (
 		<div className="app">
-			{
-				has_started ? (
-					<Map />
-				) : (
-					<GameStartMenu />
-				)
-			}
+			{has_started ? <Map /> : <GameStartMenu />}
 			<PlayerList />
 		</div>
 	);
