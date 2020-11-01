@@ -1,4 +1,4 @@
-import { LOCATIONS } from "../../Constants";
+import { LOCATIONS, SETTINGS } from "../../Constants";
 
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
@@ -24,13 +24,15 @@ const generatePlayerId = (() => {
 /**
  * @typedef {object} PlayerObject
  * 
- * @prop {Number} hp
+ * @prop {Number} buildings_count
+ * @prop {Number} max_buildings_count
  * @prop {String} location
  * @prop {Number} id 
  * @prop {String} name 
  */
 const defaultPlayerStats = {
-	hp: 4,
+	buildings_count: 0,
+	max_buildings_count: SETTINGS.MAX_BUILDINGS_COUNT,
 	location: LOCATIONS.CASTLE,
 }
 
@@ -95,7 +97,6 @@ export default (state = initialState, action) => {
 		case REMOVE_PLAYER:
 			return state.filter(player => player.id !== action.payload);
 		case ADD_PLAYER:
-			console.log(action.payload);
 			return [
 				...state,
 				{ ...action.payload },

@@ -2,21 +2,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CreatePlayerForm from '../containers/CreatePlayerForm';
+import PlayerList from '../containers/PlayerList';
+import Map from './Map';
 
-const App = ({ players }) => {
+const App = ({ has_started }) => {
 	return (
-		<div>
-			<ul>
-				{players.map(player => <li key={player.id}>Player {player.name}</li>)}
-			</ul>
-
-			<CreatePlayerForm />
+		<div className="app">
+			{
+				has_started ? (
+					<Map />
+				) : (
+					<CreatePlayerForm />
+				)
+			}
+			<PlayerList />
 		</div>
 	);
 };
 
 App.propTypes = {
-	players: PropTypes.array,
+	has_started: PropTypes.bool,
 };
 
 export default App;

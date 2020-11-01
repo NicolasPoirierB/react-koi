@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import CreatePlayerForm from '../components/CreatePlayerForm';
 import { addPlayer, removePlayer } from '../ducks/players';
+import { startGame } from '../ducks/game';
 
 const mapStateToProps = (state) => {
 	return {
@@ -15,6 +16,7 @@ export default connect(
 	mapStateToProps,
 	dispatch => bindActionCreators({
         addPlayer,
-        removePlayer,
+		removePlayer,
+		startGame,
 	}, dispatch)
 )(CreatePlayerForm);
