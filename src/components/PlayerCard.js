@@ -24,11 +24,20 @@ const PlayerCardDiv = styled.div`
 	.group-title {
 		font-weight: bold;
 	}
+
+	&.active {
+		.content {
+			border: 1px solid green;
+			box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.1);
+		}
+	}
 `;
 
 const PlayerCard = (props) => {
+	const activeClass = props.is_active ? 'active' : null;
+
 	return (
-		<PlayerCardDiv className="col-md-3">
+		<PlayerCardDiv className={`col-md-3 ${activeClass}`}>
 			<div className="content">
 				<div className="stat-group">
 					<div className="group-title">Player info</div>
