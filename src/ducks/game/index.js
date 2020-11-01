@@ -10,11 +10,11 @@ export const startGame = () => ({
 });
 
 /**
- * Changes the active player.
+ * Called when a player ends his actions for a turn. Allows
+ * to change the active player.
  */
-export const nextTurn = (next_player_id) => ({
+export const nextTurn = () => ({
 	type: NEXT_TURN,
-	payload: next_player_id,
 });
 
 
@@ -32,8 +32,7 @@ export default (state = defaultGameState, action) => {
 		case NEXT_TURN:
 			return {
 				...state,
-				turn: state.turn++,
-				active_player: action.payload,
+				turn: state.turn + 1,
 			}
 		default:
 			return state;
