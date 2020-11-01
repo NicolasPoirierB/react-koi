@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import CreatePlayerForm from '../containers/CreatePlayerForm';
+import GameStartMenu from '../containers/GameStartMenu';
 import PlayerList from '../containers/PlayerList';
 import Map from './Map';
 
@@ -12,7 +12,7 @@ const App = ({ has_started }) => {
 				has_started ? (
 					<Map />
 				) : (
-					<CreatePlayerForm />
+					<GameStartMenu />
 				)
 			}
 			<PlayerList />

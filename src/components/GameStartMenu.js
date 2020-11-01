@@ -28,7 +28,7 @@ const defaultPlayerState = {
 	name: '',
 };
 
-const CreatePlayerForm = ({ players, addPlayer, startGame }) => {
+const CreatePlayerForm = ({ players, can_start_game, can_add_players, addPlayer, startGame }) => {
 	const [player, setPlayer] = useState(defaultPlayerState);
 
 	const onInputChange = (e) => {
@@ -46,26 +46,31 @@ const CreatePlayerForm = ({ players, addPlayer, startGame }) => {
 	}
 
 	const renderPlayerCreationForm = () => {
-		if (players.length < SETTINGS.MAX_PLAYER_COUNT) {
+		if (can_add_players) {
 			return (
-				<div className="form-group">
-					<Label>
-						Player name
-						<input name="name" onChange={onInputChange} value={player.name} />
-					</Label>
+				<>
+					<h2>Add players to start the game</h2>
+					<p>Players: {players.length} / {SETTINGS.MAX_PLAYER_COUNT}</p>
+					
+					<div className="form-group">
+						<Label>
+							Player name
+							<input name="name" onChange={onInputChange} value={player.name} />
+						</Label>
 
-					<button onClick={submit}>Add Player</button>
-				</div>
+						<button className="btn btn-primary" onClick={submit}>Add Player</button>
+					</div>
+				</>
 			);
 		}
 	}
 
 	const renderGameStartButton = () => {
-		if (players.length >= SETTINGS.MIN_PLAYER_COUNT) {
+		if (can_start_game) {
 			return (
 				<div className="form-group">
 					<h2>You may now start the game</h2>
-					<button onClick={startGame}>Start the game</button>
+					<button className="btn btn-success" onClick={startGame}>Start the game</button>
 				</div>
 			);
 		}
@@ -76,9 +81,6 @@ const CreatePlayerForm = ({ players, addPlayer, startGame }) => {
 			<div className="row">
 				<div className="col-md-12">
 					<Form>
-						<h2>Add players to start the game</h2>
-						<p>Players: {players.length} / {SETTINGS.MAX_PLAYER_COUNT}</p>
-						
 						{renderPlayerCreationForm()}
 						{renderGameStartButton()}
 					</Form>

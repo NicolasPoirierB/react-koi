@@ -24,16 +24,34 @@ const generatePlayerId = (() => {
 /**
  * @typedef {object} PlayerObject
  * 
- * @prop {Number} buildings_count
- * @prop {Number} max_buildings_count
- * @prop {String} location
+ * @prop {Number} taken_city_spaces
+ * @prop {Number} max_city_spaces
+ * @prop {Number} points
+ * @prop {Number} twigs
+ * @prop {Number} pebbles
+ * @prop {Number} berries
+ * @prop {Number} resin
+ * @prop {Number} unique_critters
+ * @prop {Number} unique_buildings
+ * @prop {Number} reg_critters
+ * @prop {Number} reg_buildings
+ * @prop {Array} available_workers
+ * @prop {Array} deployed_workers
  * @prop {Number} id 
  * @prop {String} name 
  */
 const defaultPlayerStats = {
-	buildings_count: 0,
-	max_buildings_count: SETTINGS.MAX_BUILDINGS_COUNT,
-	location: LOCATIONS.CASTLE,
+	taken_city_spaces: 0,
+	max_city_spaces: SETTINGS.MAX_CITY_SPACES,
+	points: 0,
+	twigs: 0,
+	pebbles: 0,
+	berries: 0,
+	resin: 0,
+	unique_critters: 0,
+	unique_buildings: 0,
+	reg_critters: 0,
+	reg_buildings: 0,
 }
 
 /**
